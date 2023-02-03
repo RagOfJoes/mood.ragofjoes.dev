@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+
+    --color-base: 32deg 57% 95%;
+    --color-foam: 189deg 30% 48%;
+    --color-gold: 35deg 81% 56%;
+    --color-iris: 268deg 21% 57%;
+    --color-love: 343deg 35% 55%;
+    --color-muted: 257deg 9% 61%;
+    --color-overlay: 33deg 43% 91%;
+    --color-pine: 197deg 53% 34%;
+    --color-rose: 3deg 53% 67%;
+    --color-subtle: 248deg 12% 52%;
+    --color-surface: 35deg 100% 98%;
+    --color-text: 248deg 19% 40%;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-base: 249deg 22% 12%;
+      --color-foam: 189deg 43% 73%;
+      --color-gold: 35deg 88% 72%;
+      --color-iris: 267deg 57% 78%;
+      --color-love: 343deg 76% 68%;
+      --color-muted: 249deg 12% 47%;
+      --color-overlay: 248deg 25% 18%;
+      --color-pine: 197deg 49% 38%;
+      --color-rose: 2deg 55% 83%;
+      --color-subtle: 248deg 15% 61%;
+      --color-surface: 247deg 23% 15%;
+      --color-text: 245deg 50% 91%;
+    }
+  }
+}
