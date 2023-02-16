@@ -11,8 +11,8 @@ export function getNarrowLabels(startDay: CalendarProps['startDay']): string[] {
 export function getStartOfWeek(
   date: Date,
   startDay: CalendarProps['startDay']
-): Date => {
-  const day = date.getDay() || 7;
+): Date {
+  const day = date.getDay();
   const isSundayStartDay = startDay === 'sunday';
   const clampToFirstDay = isSundayStartDay ? day : day - 1;
 
