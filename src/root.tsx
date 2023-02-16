@@ -15,14 +15,14 @@ import {
 
 import './root.css';
 
-const Root = () => {
+function Root() {
   return (
     <Html
       lang="en"
       class="scroll-smooth selection:bg-muted/40 motion-reduce:scroll-auto"
     >
       <Head>
-        <Title>SolidStart - With TailwindCSS</Title>
+        <Title>Mood Calendar</Title>
         <Meta charset="utf-8" />
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -38,6 +38,6 @@ const Root = () => {
       </Body>
     </Html>
   );
-};
+}
 
 export default Root;

@@ -6,8 +6,8 @@ import dayjs from 'dayjs';
 import { useCalendarCtx } from './Context';
 import { CalendarHeaderProps } from './types';
 
-export const CalendarHeader = (props: CalendarHeaderProps) => {
   const [split, other] = splitProps(props, ['children', 'class', 'format']);
+export function CalendarHeader(props: CalendarHeaderProps) {
 
   const [state, { onDateChange }] = useCalendarCtx();
 
@@ -77,4 +77,4 @@ export const CalendarHeader = (props: CalendarHeaderProps) => {
       </button>
     </div>
   );
-};
+}

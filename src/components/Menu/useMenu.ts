@@ -5,7 +5,7 @@ import { normalizeProps, useMachine } from '@zag-js/solid';
 
 import { UseMenu } from './types';
 
-const useMenu = (): UseMenu => {
+function useMenu(): UseMenu {
   const [state, send] = useMachine(
     menu.machine({
       id: createUniqueId(),
@@ -17,6 +17,6 @@ const useMenu = (): UseMenu => {
   return {
     api,
   };
-};
+}
 
 export default useMenu;

@@ -1,11 +1,12 @@
-export const isFunction = (value: any): value is Function =>
-  typeof value === 'function';
+export function isFunction(value: any): value is Function {
+  return typeof value === 'function';
+}
 
-const runIfFn = <T, U>(
+function runIfFn<T, U>(
   valueOrFn: T | ((...fnArgs: U[]) => T),
   ...args: U[]
-): T => {
+): T {
   return isFunction(valueOrFn) ? valueOrFn(...args) : valueOrFn;
-};
+}
 
 export default runIfFn;

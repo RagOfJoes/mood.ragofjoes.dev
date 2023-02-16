@@ -7,7 +7,7 @@ import { useCalendarCtx } from './Context';
 import { CalendarLabelsProps } from './types';
 import { getNarrowLabels, getStartOfWeek } from './utils';
 
-export const CalendarLabels = (props: CalendarLabelsProps) => {
+export function CalendarLabels(props: CalendarLabelsProps) {
   const [split, other] = splitProps(props, ['children', 'class', 'format']);
 
   const [state] = useCalendarCtx();
@@ -70,4 +70,4 @@ export const CalendarLabels = (props: CalendarLabelsProps) => {
       </tr>
     </thead>
   );
-};
+}

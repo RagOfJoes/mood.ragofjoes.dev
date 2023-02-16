@@ -6,7 +6,7 @@ import { CalendarProvider } from './Context';
 import { CalendarProps } from './types';
 import useCalendar from './useCalendar';
 
-export const Calendar = (props: CalendarProps) => {
+export function Calendar(props: CalendarProps) {
   const [split, other] = splitProps(props, [
     'class',
     'date',
@@ -33,4 +33,4 @@ export const Calendar = (props: CalendarProps) => {
       />
     </CalendarProvider>
   );
-};
+}

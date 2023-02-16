@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { CalendarDayProps } from './types';
 
-export const CalendarDay = (props: CalendarDayProps) => {
+export function CalendarDay(props: CalendarDayProps) {
   const [split, other] = splitProps(props, [
     'children',
     'class',
@@ -50,4 +50,4 @@ export const CalendarDay = (props: CalendarDayProps) => {
       </div>
     </div>
   );
-};
+}

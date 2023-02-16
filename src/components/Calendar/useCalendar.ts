@@ -6,7 +6,7 @@ import { CalendarProps, UseCalendarReturn, UseCalendarState } from './types';
 import { getStartOfWeek } from './utils';
 import runIfFn from '@/lib/runIfFn';
 
-const useCalendar = (props: CalendarProps): UseCalendarReturn => {
+function useCalendar(props: CalendarProps): UseCalendarReturn {
   const [split] = splitProps(props, ['startDay']);
 
   const [state, setState] = createStore<UseCalendarState>({
@@ -81,6 +81,6 @@ const useCalendar = (props: CalendarProps): UseCalendarReturn => {
   };
 
   return [state, { onDateChange, onSelectedChange }];
-};
+}
 
 export default useCalendar;

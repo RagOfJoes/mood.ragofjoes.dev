@@ -6,7 +6,7 @@ import { useCalendarCtx } from './Context';
 import { CalendarDaysProps } from './types';
 import runIfFn from '@/lib/runIfFn';
 
-export const CalendarDays = (props: CalendarDaysProps) => {
+export function CalendarDays(props: CalendarDaysProps) {
   const [split, other] = splitProps(props, ['children', 'class']);
 
   const [state] = useCalendarCtx();
@@ -61,4 +61,4 @@ export const CalendarDays = (props: CalendarDaysProps) => {
       </For>
     </tbody>
   );
-};
+}

@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import { CalendarBodyProps } from './types';
 
-export const CalendarBody = (props: CalendarBodyProps) => {
+export function CalendarBody(props: CalendarBodyProps) {
   const [split, other] = splitProps(props, ['class']);
 
   return (
@@ -19,4 +19,4 @@ export const CalendarBody = (props: CalendarBodyProps) => {
       )}
     />
   );
-};
+}

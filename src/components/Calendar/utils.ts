@@ -1,16 +1,14 @@
 import { CalendarProps } from './types';
 
-export const getNarrowLabels = (
-  startDay: CalendarProps['startDay']
-): string[] => {
+export function getNarrowLabels(startDay: CalendarProps['startDay']): string[] {
   if (startDay === 'sunday') {
     return ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   }
 
   return ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-};
+}
 
-export const getStartOfWeek = (
+export function getStartOfWeek(
   date: Date,
   startDay: CalendarProps['startDay']
 ): Date => {
@@ -23,4 +21,4 @@ export const getStartOfWeek = (
   }
 
   return date;
-};
+}
