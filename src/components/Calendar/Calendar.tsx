@@ -26,7 +26,9 @@ export function Calendar(props: CalendarProps) {
         class={clsx(
           'Calendar',
 
-          'rounded-3xl border border-muted/20 bg-surface',
+          'rounded-3xl bg-surface bg-gradient-to-br from-surface via-base to-base bg-[length:200%_200%] bg-left-top shadow',
+
+          'dark:from-overlay dark:to-base dark:shadow-none',
 
           split.class
         )}

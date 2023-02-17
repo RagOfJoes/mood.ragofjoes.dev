@@ -57,12 +57,12 @@ export function CalendarLabels(props: CalendarLabelsProps) {
             return (
               <th
                 class={clsx(
-                  'table-cell border-b border-r border-t border-b-muted/20 border-r-muted/20 border-t-muted/20 p-3 last:border-r-0',
+                  'table-cell border-b border-r border-t p-3 last:border-r-0',
 
                   'max-md:p-2'
                 )}
               >
-                <p class="text-sm font-semibold uppercase">{label}</p>
+                <p class="text-sm font-bold uppercase text-subtle">{label}</p>
               </th>
             );
           }}

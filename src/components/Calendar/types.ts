@@ -33,11 +33,12 @@ export type CalendarDaysProps = Omit<ComponentProps<'tbody'>, 'children'> & {
       }) => JSX.Element | undefined);
 };
 
-export type CalendarDayProps = ComponentProps<'div'> & {
+export type CalendarDayProps = Omit<ComponentProps<'div'>, 'onClick'> & {
   date: Date;
   isDisabled?: boolean;
   isOutside?: boolean;
   isSelected?: boolean;
+  onClick?: JSX.EventHandlerUnion<HTMLButtonElement, MouseEvent>;
 };
 
 export type UseCalendarState = {
