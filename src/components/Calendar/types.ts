@@ -11,6 +11,7 @@ export type CalendarProps = ComponentProps<'div'> & {
 };
 
 export type CalendarHeaderProps = ComponentProps<'div'> & {
+  disableArrows?: boolean;
   format?: string;
 };
 
