@@ -24,11 +24,11 @@ export function Header(props: HeaderProps) {
         <A
           href="/"
           class={clsx(
-            'flex items-center justify-center rounded-lg p-2 text-2xl font-bold leading-none text-subtle transition-all',
+            'flex items-center justify-center rounded-lg p-2 text-2xl font-bold leading-none transition-all',
 
             'active:text-text',
             'focus:text-text focus:outline-none focus:ring',
-            'hover:bg-muted/10 hover:text-text'
+            'hover:bg-muted/10'
           )}
         >
           <h1 class="text-xl font-bold leading-none">Mood</h1>
