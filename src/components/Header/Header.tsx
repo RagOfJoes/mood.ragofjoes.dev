@@ -9,6 +9,9 @@ import { HeaderProps } from './types';
 export function Header(props: HeaderProps) {
   const [split, other] = splitProps(props, ['children', 'class']);
 
+  const isMonth = useMatch(() => '/month');
+  const isYear = useMatch(() => '/year');
+
   return (
     <header
       {...other}
@@ -37,7 +40,7 @@ export function Header(props: HeaderProps) {
         <div class="flex items-center gap-2">
           <A
             href="/month"
-            aria-current={useMatch(() => '/month')() && 'page'}
+            aria-current={isMonth() && 'page'}
             class={clsx(
               'flex items-center justify-center rounded-lg p-2 text-sm font-medium text-subtle transition-all',
 
@@ -51,7 +54,7 @@ export function Header(props: HeaderProps) {
           </A>
           <A
             href="/year"
-            aria-current={useMatch(() => '/year')() && 'page'}
+            aria-current={isYear() && 'page'}
             class={clsx(
               'flex items-center justify-center rounded-lg p-2 text-sm font-medium text-subtle transition-all',
 
