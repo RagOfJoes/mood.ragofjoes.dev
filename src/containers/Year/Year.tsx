@@ -1,6 +1,9 @@
-import { For, Match, splitProps, Switch } from 'solid-js';
+import { createSignal, For, Match, splitProps, Switch } from 'solid-js';
 
 import clsx from 'clsx';
+import dayjs from 'dayjs';
+import { useSearchParams } from 'solid-start';
+import { z } from 'zod';
 
 import { YearContainerProps } from './types';
 import {
@@ -13,9 +16,17 @@ import {
 } from '@/components/Calendar';
 import { Header } from '@/components/Header';
 import { MoodBar } from '@/components/MoodBar';
+import { Select } from '@/components/Select';
+import { MIN_YEAR } from '@/lib/constants';
+import getDateFromURL from '@/lib/getDataFromURL';
 
 export function YearContainer(props: YearContainerProps) {
   const [split, other] = splitProps(props, ['class']);
+
+  const currentYear = new Date().getFullYear();
+
+  const [, setSearchParams] = useSearchParams();
+  const [date, setDate] = createSignal(getDateFromURL(true));
 
   return (
     <>
@@ -32,6 +43,49 @@ export function YearContainer(props: YearContainerProps) {
         )}
       >
         <section>
+          <div class="flex">
+            <Select
+              label="Year"
+              value={date().getFullYear()}
+              onInput={(e) => {
+                const newYear = z.coerce
+                  .number()
+                  .gte(MIN_YEAR - 1)
+                  .lte(currentYear)
+                  .safeParse(e.currentTarget.value);
+                if (!newYear.success) {
+                  return;
+                }
+
+                setSearchParams({ y: newYear.data });
+
+                const newDate = dayjs(date()).set('year', newYear.data);
+                setDate(newDate.toDate());
+              }}
+            >
+              <For each={Array.from({ length: currentYear - MIN_YEAR })}>
+                {(_, i) => {
+                  const value = currentYear - i();
+
+                  const isSelected = () => date().getFullYear() === value;
+
+                  return (
+                    <option
+                      value={value}
+                      disabled={isSelected()}
+                      selected={isSelected()}
+                      aria-selected={isSelected()}
+                    >
+                      {value}
+                    </option>
+                  );
+                }}
+              </For>
+            </Select>
+          </div>
+        </section>
+
+        <section class="mt-4">
           <div
             class={clsx(
               'rounded-xl bg-surface bg-gradient-to-br from-surface via-base to-base bg-[length:200%_200%] bg-left-top p-4 shadow',
@@ -64,10 +118,10 @@ export function YearContainer(props: YearContainerProps) {
                     <CalendarLabels />
 
                     <CalendarDays>
-                      {({ date, isOutside, isSelected }) => {
+                      {({ date: dateProp, isOutside, isSelected }) => {
                         return (
                           <CalendarDay
-                            date={date}
+                            date={dateProp}
                             isOutside={isOutside}
                             isSelected={isSelected}
                             onClick={() => {}}
@@ -87,12 +141,12 @@ export function YearContainer(props: YearContainerProps) {
                                   'group-data-[outside=true]:opacity-60',
 
                                   {
-                                    'bg-gold': date.getDay() === 0,
-                                    'bg-pine': date.getDay() === 1,
-                                    'bg-foam': date.getDay() === 2,
-                                    'bg-iris': date.getDay() === 3,
-                                    'bg-rose': date.getDay() === 4,
-                                    'bg-love': date.getDay() === 5,
+                                    'bg-gold': dateProp.getDay() === 0,
+                                    'bg-pine': dateProp.getDay() === 1,
+                                    'bg-foam': dateProp.getDay() === 2,
+                                    'bg-iris': dateProp.getDay() === 3,
+                                    'bg-rose': dateProp.getDay() === 4,
+                                    'bg-love': dateProp.getDay() === 5,
                                   }
                                 )}
                               />
@@ -106,20 +160,22 @@ export function YearContainer(props: YearContainerProps) {
                                 )}
                               >
                                 <Switch>
-                                  <Match when={date.getDay() === 0}>
+                                  <Match when={dateProp.getDay() === 0}>
                                     Happy
                                   </Match>
-                                  <Match when={date.getDay() === 1}>Sad</Match>
-                                  <Match when={date.getDay() === 2}>
+                                  <Match when={dateProp.getDay() === 1}>
+                                    Sad
+                                  </Match>
+                                  <Match when={dateProp.getDay() === 2}>
                                     Productive
                                   </Match>
-                                  <Match when={date.getDay() === 3}>
+                                  <Match when={dateProp.getDay() === 3}>
                                     Sick / Tired
                                   </Match>
-                                  <Match when={date.getDay() === 4}>
+                                  <Match when={dateProp.getDay() === 4}>
                                     Average
                                   </Match>
-                                  <Match when={date.getDay() === 5}>
+                                  <Match when={dateProp.getDay() === 5}>
                                     Angry
                                   </Match>
                                 </Switch>
