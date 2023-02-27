@@ -5,19 +5,6 @@ import clsx from 'clsx';
 import { HomeContainerProps } from './types';
 import { Header } from '@/components/Header';
 
-export type MoodEntry = {
-  // UUID
-  id: string;
-  createdAt: Date;
-  updatedAt?: Date;
-  // UUID
-  createdBy: string;
-
-  date: Date;
-  mood: 'ANGRY' | 'AVERAGE' | 'HAPPY' | 'PRODUCTIVE' | 'SAD' | 'SICK';
-  notes: string;
-};
-
 export function HomeContainer(props: HomeContainerProps) {
   const [split, other] = splitProps(props, ['class']);
 
